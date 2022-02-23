@@ -2,22 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Project {
+  id: String!
+  name: String!
+  code: Int!
+  employees: [Employee!]
+}
+
 type Employee {
   id: String!
   firstName: String!
   lastName: String!
   designation: String!
   city: String
-}
-
-type Project {
-  id: String!
-  name: String!
-  code: Int!
+  project: Project!
+  projectId: String!
 }
 
 type Query {
   getAllEmployees: [Employee!]!
+  getEmployee(id: String!): Employee!
   getAllProjects: [Project!]!
   findOneProject(id: String!): Project!
 }
@@ -34,6 +38,7 @@ input EmployeeCreateDto {
   lastName: String!
   designation: String!
   city: String
+  projectId: String!
 }
 
 input CreateProjectInput {
